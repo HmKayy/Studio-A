@@ -1,0 +1,3 @@
+2/3/2023
+Project started.
+Added documentation, add ScalaFX to sbt and experimenting a bit with scalaFX in main.
