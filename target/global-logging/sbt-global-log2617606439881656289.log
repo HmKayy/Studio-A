@@ -1,0 +1,11 @@
+[debug] > Exec(val bufferedSource = io.Source.fromFile("/data/vgsales.csv"), None, None)
+[error] Expected ID character
+[error] Not a valid command: val (similar: eval, alias, apply)
+[error] Expected project ID
+[error] Expected configuration
+[error] Expected ':'
+[error] Expected key
+[error] Not a valid key: val
+[error] val bufferedSource = io.Source.fromFile("/data/vgsales.csv")
+[error]    ^
+[debug] > Exec(idea-shell, None, None)

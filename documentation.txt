@@ -1,3 +1,6 @@
 2/3/2023
 Project started.
 Added documentation, add ScalaFX to sbt and experimenting a bit with scalaFX in main.
+6/3/2023
+A dataset is chosen.
+Added fileHandler: begin the implementation of fileHandler to load,save CSV data.
