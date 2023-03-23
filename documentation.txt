@@ -4,3 +4,12 @@ Added documentation, add ScalaFX to sbt and experimenting a bit with scalaFX in 
 6/3/2023
 A dataset is chosen.
 Added fileHandler: begin the implementation of fileHandler to load,save CSV data.
+20/3/2023
+Fixing errors with the CSV reader.
+Added read method for JSON file.
+23/3/2023
+Added more methods so that the program can handle both JSON and CSV file.
+Added manual input.
+Though, the code right now has a lot of error, I think these will be revised in the upcoming, along side the
+implementation of various methods to calculate values like sum,average,etc.
+Documentation was updated.
