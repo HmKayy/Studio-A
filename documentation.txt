@@ -10,6 +10,16 @@ Added read method for JSON file.
 23/3/2023
 Added more methods so that the program can handle both JSON and CSV file.
 Added manual input.
-Though, the code right now has a lot of error, I think these will be revised in the upcoming, along side the
+Though, the code right now has a lot of error, I think these will be revised in the upcoming, alongside the
 implementation of various methods to calculate values like sum,average,etc.
 Documentation was updated.
+23/4/2023
+The entire project has been overhauled.
+There are now 5 main files
+Charts: Containing the classes of the 3 required graphs
+DataManager: contains DataManager Object, its main task is to save/load data/config
+DataProcessor: contains the DataProcessor Object, its main task is to do simple calculation
+like max/min/average/std/sum, it also has functions to create card to show off the calculation
+Main: where everything pertaining to GUI is contained (labels,buttons,boxes,containers,etc)
+VideoGame: contain the class of the Data.
+Everything is mostly complete by now, only needs some simple testing and bug fixing

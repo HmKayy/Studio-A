@@ -1,0 +1,13 @@
+Name,Year,Genre,NASales,EUSales,GlobalSales
+Game 1,2000,Action,11.0,25.0,33.0
+Game 2,2000,Sports,16.0,22.0,34.0
+Game 3,2000,Platform,12.0,24.0,35.0
+Game 4,2000,Racing,17.0,28.0,34.0
+Game 5,2000,Role-Playing,15.0,26.0,3.2
+Game 6,2000,Puzzle,1.3,26.0,37.0
+Game 7,2000,Misc,12.0,2.0,3.0
+Game 8,2000,Shooter,13.0,26.0,37.0
+Game 9,2000,Simulation,112.0,25.0,31.0
+Game 10,2000,Adventure,13.0,24.0,39.0
+Game 11,2000,Fighting,12.0,22.0,38.0
+Game 12,2000,Strategy,15.0,26.0,73.0

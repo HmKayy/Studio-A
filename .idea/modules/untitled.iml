@@ -12,31 +12,23 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="sbt: io.circe:circe-core_3:0.14.1:jar" level="project" />
-    <orderEntry type="library" name="sbt: io.circe:circe-generic_3:0.14.1:jar" level="project" />
-    <orderEntry type="library" name="sbt: io.circe:circe-jawn_3:0.14.1:jar" level="project" />
-    <orderEntry type="library" name="sbt: io.circe:circe-numbers_3:0.14.1:jar" level="project" />
-    <orderEntry type="library" name="sbt: io.circe:circe-parser_3:0.14.1:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.openjfx:javafx-base:19:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.openjfx:javafx-base:19:win:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.openjfx:javafx-controls:19:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.openjfx:javafx-controls:19:win:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.openjfx:javafx-fxml:19:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.openjfx:javafx-fxml:19:win:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.openjfx:javafx-graphics:19:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.openjfx:javafx-graphics:19:win:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.openjfx:javafx-media:19:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.openjfx:javafx-media:19:win:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.openjfx:javafx-swing:19:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.openjfx:javafx-swing:19:win:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.openjfx:javafx-web:19:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.openjfx:javafx-web:19:win:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.openjfx:javafx-base:18.0.2:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.openjfx:javafx-base:18.0.2:win:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.openjfx:javafx-controls:18.0.2:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.openjfx:javafx-controls:18.0.2:win:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.openjfx:javafx-fxml:18.0.2:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.openjfx:javafx-fxml:18.0.2:win:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.openjfx:javafx-graphics:18.0.2:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.openjfx:javafx-graphics:18.0.2:win:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.openjfx:javafx-media:18.0.2:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.openjfx:javafx-media:18.0.2:win:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.openjfx:javafx-swing:18.0.2:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.openjfx:javafx-swing:18.0.2:win:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.openjfx:javafx-web:18.0.2:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.openjfx:javafx-web:18.0.2:win:jar" level="project" />
     <orderEntry type="library" name="sbt: org.scala-lang:scala-library:2.13.10:jar" level="project" />
     <orderEntry type="library" name="sbt: org.scala-lang:scala3-library_3:3.2.2:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.scalafx:scalafx_3:19.0.0-R30:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.typelevel:cats-core_3:2.6.1:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.typelevel:cats-kernel_3:2.6.1:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.typelevel:jawn-parser_3:1.1.2:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.typelevel:simulacrum-scalafix-annotations_3:0.5.4:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.scalafx:scalafx-extras_3:0.7.0:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.scalafx:scalafx_3:18.0.2-R29:jar" level="project" />
   </component>
 </module>
