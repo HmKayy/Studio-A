@@ -1,36 +1,33 @@
 import scalafx.collections.ObservableBuffer
 import javafx.collections.ObservableList
 import scalafx.scene.chart.{BarChart, CategoryAxis, NumberAxis, XYChart}
-import scalafx.scene.layout.VBox
-import scalafx.scene.paint.Color
+import scalafx.scene.layout.{Background, BackgroundFill, CornerRadii, HBox, Region, VBox}
 import scalafx.Includes.observableList2ObservableBuffer
 import scalafx.collections.ObservableBuffer
-import scalafx.scene.control._
-import scalafx.scene.layout.{Background, BackgroundFill, CornerRadii, HBox, VBox}
-import scalafx.scene.paint.Color._
+import scalafx.scene.paint.Color.*
+import scalafx.scene.paint.Color
 import scalafx.scene.text.{Font, FontWeight}
 import scalafx.geometry.{Insets, Pos}
 import scalafx.stage.Screen
-import scalafx.scene.chart._
+import scalafx.scene.chart.*
 import scalafx.util.Duration
 import scalafx.scene.control.Tooltip
 import scalafx.scene.effect.DropShadow
-import scalafx.scene.paint.Color
-import scalafx.Includes._
+import scalafx.Includes.*
 import scalafx.scene.Node
 
 class barPlot(data: List[VideoGame], region1: String, region2: String) extends VBox {
-  val sum1 = DataProcessor.salesByGenre(data,region1)
-  val sum2 = DataProcessor.salesByGenre(data,region2)
-  val genres = ObservableBuffer() ++ DataProcessor.genres(data)
+  private val sum1 = DataProcessor.salesByGenre(data,region1)
+  private val sum2 = DataProcessor.salesByGenre(data,region2)
+  private val genres = ObservableBuffer() ++ DataProcessor.genres(data)
 
-  val xAxis = new CategoryAxis()
+  private val xAxis = new CategoryAxis()
   xAxis.setCategories(genres)
 
-  val yAxis = new NumberAxis()
+  private val yAxis = new NumberAxis()
   yAxis.setLabel("Total Sales")
 
-  val series1 = new XYChart.Series[String, Number]()
+  private val series1 = new XYChart.Series[String, Number]()
   series1.setName(region1 + " Sales")
   for i <- genres.indices do
   {
@@ -38,13 +35,13 @@ class barPlot(data: List[VideoGame], region1: String, region2: String) extends V
   }
 
 
-  val series2 = new XYChart.Series[String, Number]()
+  private val series2 = new XYChart.Series[String, Number]()
   series2.setName(region2 +" Sales")
   for i <- genres.indices do {
     series2.getData.add(XYChart.Data(genres(i), sum2(genres(i))))
   }
 
-  val barChart = new BarChart[String, Number](xAxis, yAxis)
+  private val barChart = new BarChart[String, Number](xAxis, yAxis)
   this.children = barChart
   xAxis.setTickLabelRotation(-45)
   barChart.getData.addAll(series2, series1)
@@ -54,7 +51,7 @@ class barPlot(data: List[VideoGame], region1: String, region2: String) extends V
       d.getData.foreach(
         i => {
           val barNode:Node = i.getNode
-          var barValue:Double = i.getYValue.toString.toDouble
+          val barValue:Double = i.getYValue.toString.toDouble
           val msg = "%s: %.2f".format(d.getName, barValue)
           // Tooltip installing
           val tt = new Tooltip {
@@ -65,18 +62,19 @@ class barPlot(data: List[VideoGame], region1: String, region2: String) extends V
         }
       )
     })
+  if region1 == "NA" && region2 == "EU" then
+  barChart.setStyle("CHART_COLOR_1: blue ; CHART_COLOR_2: red ;")
+  else if region1 == "EU" && region2 == "NA" then
+    barChart.setStyle("CHART_COLOR_1: red ; CHART_COLOR_2: blue ;")
+  else if region1 == "Global" && region2 == "NA" then
+      barChart.setStyle("CHART_COLOR_1: red ; CHART_COLOR_2: green ;")
+  else if region1 == "Global" && region2 == "EU" then
+    barChart.setStyle("CHART_COLOR_1: blue ; CHART_COLOR_2: green ;")
+  else if region1 == "EU" && region2 == "Global" then
+    barChart.setStyle("CHART_COLOR_1: green ; CHART_COLOR_2: blue ;")
+  else if region1 == "NA" && region2 == "Global" then
+    barChart.setStyle("CHART_COLOR_1: green ; CHART_COLOR_2: red ;")
 
-  def updateData(region1: String, region2: String): Unit = {
-    series1.setName(region1 + " Sales")
-    for (i <- genres.indices) {
-      series1.getData.get(i).setYValue(DataProcessor.salesByGenre(data, region1)(genres(i)))
-    }
-
-    series2.setName(region2 + " Sales")
-    for (i <- genres.indices) {
-      series2.getData.get(i).setYValue(DataProcessor.salesByGenre(data, region2)(genres(i)))
-    }
-  }
 
 
   barChart.setPrefSize(800, 400)
@@ -84,29 +82,29 @@ class barPlot(data: List[VideoGame], region1: String, region2: String) extends V
   barChart.setMaxSize(800, 400)
 }
 class scatterPlot(data: List[VideoGame],region1:String,region2:String) extends VBox {
-  val sum1 = DataProcessor.salesByGenre(data, region1)
-  val sum2 = DataProcessor.salesByGenre(data, region2)
-  val genres = ObservableBuffer() ++ DataProcessor.genres(data)
+  private val sum1 = DataProcessor.salesByGenre(data, region1)
+  private val sum2 = DataProcessor.salesByGenre(data, region2)
+  private val genres = ObservableBuffer() ++ DataProcessor.genres(data)
 
-  val xAxis = new CategoryAxis()
+  private val xAxis = new CategoryAxis()
   xAxis.setCategories(genres)
 
-  val yAxis = new NumberAxis()
+  private val yAxis = new NumberAxis()
   yAxis.setLabel("Total Sales")
 
-  val series1 = new XYChart.Series[String, Number]()
+  private val series1 = new XYChart.Series[String, Number]()
   series1.setName(region1+" Sales")
   for i <- genres.indices do {
     series1.getData.add(XYChart.Data(genres(i), sum1(genres(i))))
   }
 
-  val series2 = new XYChart.Series[String, Number]()
+  private val series2 = new XYChart.Series[String, Number]()
   series2.setName(region2+" Sales")
   for i <- genres.indices do {
     series2.getData.add(XYChart.Data(genres(i), sum2(genres(i))))
   }
 
-  val scatterChart = new ScatterChart[String, Number](xAxis, yAxis)
+  private val scatterChart = new ScatterChart[String, Number](xAxis, yAxis)
   this.children = scatterChart
   scatterChart.getData.addAll(series2, series1)
   scatterChart.setTitle(region1+ " vs "+ region2 + " scatter plot")
@@ -115,7 +113,7 @@ class scatterPlot(data: List[VideoGame],region1:String,region2:String) extends V
       d.getData.foreach(
         i => {
           val barNode:Node = i.getNode
-          var barValue:Double = i.getYValue.toString.toDouble
+          val barValue:Double = i.getYValue.toString.toDouble
           val msg = "%s: %.2f".format(d.getName, barValue)
           // Tooltip installing
           val tt = new Tooltip {
@@ -126,6 +124,21 @@ class scatterPlot(data: List[VideoGame],region1:String,region2:String) extends V
         }
       )
     })
+  if region1 == "NA" && region2 == "EU" then
+    scatterChart.setStyle("CHART_COLOR_1: blue ; CHART_COLOR_2: red ;")
+  else if region1 == "EU" && region2 == "NA" then
+    scatterChart.setStyle("CHART_COLOR_1: red ; CHART_COLOR_2: blue ;")
+  else if region1 == "Global" && region2 == "NA" then
+    scatterChart.setStyle("CHART_COLOR_1: red ; CHART_COLOR_2: green ;")
+  else if region1 == "Global" && region2 == "EU" then
+    scatterChart.setStyle("CHART_COLOR_1: blue ; CHART_COLOR_2: green ;")
+  else if region1 == "EU" && region2 == "Global" then
+    scatterChart.setStyle("CHART_COLOR_1: green ; CHART_COLOR_2: blue ;")
+  else if region1 == "NA" && region2 == "Global" then
+    scatterChart.setStyle("CHART_COLOR_1: green ; CHART_COLOR_2: red ;")
+
+
+
 
   def updateData(region1: String, region2: String): Unit = {
     series1.setName(region1 + " Sales")
@@ -144,11 +157,10 @@ class scatterPlot(data: List[VideoGame],region1:String,region2:String) extends V
   scatterChart.setMinSize(800, 400)
   scatterChart.setMaxSize(800, 400)
 }
-class pieChart(data: List[VideoGame],region:String) extends VBox {
-  val sumregion = DataProcessor.salesByGenre(data, region)
-  val genres = ObservableBuffer() ++ DataProcessor.genres(data)
-  var note = new Label("")
-  val pieChartData = ObservableBuffer(
+class pieChart(data: List[VideoGame], region: String) extends VBox {
+  private val sumregion = DataProcessor.salesByGenre(data, region)
+  private val genres = ObservableBuffer() ++ DataProcessor.genres(data)
+  private val pieChartData = ObservableBuffer(
     PieChart.Data(genres(0), sumregion(genres(0))),
     PieChart.Data(genres(1), sumregion(genres(1))),
     PieChart.Data(genres(2), sumregion(genres(2))),
@@ -162,11 +174,11 @@ class pieChart(data: List[VideoGame],region:String) extends VBox {
     PieChart.Data(genres(10), sumregion(genres(10))),
     PieChart.Data(genres(11), sumregion(genres(11)))
   )
-  var total: Double = _
-  val pie: PieChart = new PieChart()
+  private var total: Double = _
+  private val pie: PieChart = new PieChart()
   this.children = pie
 
-  pie.setTitle(region+" pie chart")
+  pie.setTitle(region + " pie chart")
   pie.setData(pieChartData)
   pie.setLabelsVisible(false)
   pie.getData.foreach(total += _.getPieValue)
@@ -174,7 +186,7 @@ class pieChart(data: List[VideoGame],region:String) extends VBox {
   pie.getData.foreach(
     d => {
       val sliceNode: Node = d.getNode
-      var pieValue = d.getPieValue
+      val pieValue = d.getPieValue
       val percent = (pieValue / total) * 100.0
       val msg = "%s: %.2f (%.2f%%)".format(d.getName, pieValue, percent)
       // Show tooltip when hovered
@@ -184,18 +196,6 @@ class pieChart(data: List[VideoGame],region:String) extends VBox {
       }
       Tooltip.install(sliceNode, tt)
     })
-
-  val colors = List(Color.Red, Color.Green, Color.Blue, Color.Yellow, Color.Orange, Color.Purple,
-    Color.Cyan, Color.Magenta, Color.Gray, Color.DarkGray, Color.Pink, Color.Brown)
-
-  for ((data, color) <- pieChartData.zip(colors)) {
-    data.getNode.setStyle("-fx-pie-color: " + toRgbCode(color) + ";")
-
-    def toRgbCode(color: Color): String = {
-      val r = (color.getRed() * 255).toInt
-      val g = (color.getGreen() * 255).toInt
-      val b = (color.getBlue() * 255).toInt
-      String.format("#%02x%02x%02x", r.asInstanceOf[AnyRef], g.asInstanceOf[AnyRef], b.asInstanceOf[AnyRef])
-    }
-  }
+  pie.startAngle = 90
+  pie.clockwise = true
 }

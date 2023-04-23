@@ -7,25 +7,24 @@ object DataManager {
 
   // Function to load Data
   def loadData(filePath: String): (List[VideoGame], Boolean) = {
-    if (filePath.isEmpty | filePath.isBlank) {
+    if (filePath.isEmpty || filePath.isBlank) {
       // return dummy data if filePath is empty
       val data = List(
-          VideoGame("Game 1", 2000, "Action", 11.0, 25.0, 33.0),
-          VideoGame("Game 2", 2000, "Sports", 16.0, 22.0, 34.0),
-          VideoGame("Game 3", 2000, "Platform", 12.0, 24.0, 35.0),
-          VideoGame("Game 4", 2000, "Racing", 17.0, 28.0, 34.0),
-          VideoGame("Game 5", 2000, "Role-Playing", 15.0, 26.0, 3.20),
-          VideoGame("Game 6", 2000, "Puzzle", 1.30, 26.0, 37.0),
-          VideoGame("Game 7", 2000, "Misc", 12.0, 2.0, 3.0),
-          VideoGame("Game 8", 2000, "Shooter", 13.0, 26.0, 37.0),
-          VideoGame("Game 9", 2000, "Simulation", 112.0, 25.0, 31.0),
-          VideoGame("Game 10", 2000, "Adventure", 13.0, 24.0, 39.0),
-          VideoGame("Game 11", 2000, "Fighting", 12.0, 22.0, 38.0),
-          VideoGame("Game 12", 2000, "Strategy", 15.0, 26.0, 73.0)
+        VideoGame("Game 1", 2000, "Action", 11.0, 25.0, 33.0),
+        VideoGame("Game 2", 2000, "Sports", 16.0, 22.0, 34.0),
+        VideoGame("Game 3", 2000, "Platform", 12.0, 24.0, 35.0),
+        VideoGame("Game 4", 2000, "Racing", 17.0, 28.0, 34.0),
+        VideoGame("Game 5", 2000, "Role-Playing", 15.0, 26.0, 3.20),
+        VideoGame("Game 6", 2000, "Puzzle", 1.30, 26.0, 37.0),
+        VideoGame("Game 7", 2000, "Misc", 12.0, 2.0, 3.0),
+        VideoGame("Game 8", 2000, "Shooter", 13.0, 26.0, 37.0),
+        VideoGame("Game 9", 2000, "Simulation", 112.0, 25.0, 31.0),
+        VideoGame("Game 10", 2000, "Adventure", 13.0, 24.0, 39.0),
+        VideoGame("Game 11", 2000, "Fighting", 12.0, 22.0, 38.0),
+        VideoGame("Game 12", 2000, "Strategy", 15.0, 26.0, 73.0)
       )
       (data, true)
-    }
-    else {
+    } else {
       val bufferedSource = Source.fromFile(filePath)
       val lines = bufferedSource.getLines.toList
       val header = lines.head.split(",").map(_.trim)
@@ -34,12 +33,15 @@ object DataManager {
         bufferedSource.close()
         return (List.empty[VideoGame], false)
       }
+
       val data = (for (line <- lines.tail) yield {
         val cols = line.split(",").map(_.trim)
-        if (!cols.contains("N/A") && cols(1).matches("\\d+")) {
+
+        // check if all sales numbers are valid doubles
+        if (!cols.contains("N/A") && cols(1).matches("\\d+") && cols(3).matches("-?\\d+(\\.\\d+)?") && cols(4).matches("-?\\d+(\\.\\d+)?") && cols(5).matches("-?\\d+(\\.\\d+)?")) {
           VideoGame(cols(0).trim, cols(1).toInt, cols(2), cols(3).toDouble, cols(4).toDouble, cols(5).toDouble)
         } else {
-          null // return null for records with "N/A" values or non-numeric year
+          null // return null for records with "N/A" values, non-numeric year or invalid sales numbers
         }
       }).filter(_ != null).toList
 
@@ -85,7 +87,7 @@ object DataManager {
           value
         } else "EU"
         val region = if (lines(2).startsWith("Region : ")) {
-          val value = lines(2).substring(10)
+          val value = lines(2).substring(9)
           if (value != "NA" && value != "EU" && value != "Global") checker = false
           value
         } else "Global"
@@ -106,7 +108,7 @@ object DataManager {
     try {
       writer.write(s"Region 1: ${config(0)}\n")
       writer.write(s"Region 2: ${config(1)}\n")
-      writer.write(s"Region 3: ${config(2)}\n")
+      writer.write(s"Region : ${config(2)}\n")
       writer.write(s"Region Stat: ${config(3)}\n")
       true
     } catch {

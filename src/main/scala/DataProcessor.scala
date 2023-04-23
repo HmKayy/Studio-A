@@ -67,7 +67,7 @@ object DataProcessor {
     topSellingGenres.mkString(", ")
   }
   // Create a custom card that shows the top 5 genres in a region
-  def createTopGenresCard(title: String, genres: String, color: Color): VBox = {
+  def createTopGenresCard(title: String, genres: String): VBox = {
     val titleLabel = new Label(title) {
       style = "-fx-font-weight: bold; -fx-font-size: 16pt"
     }

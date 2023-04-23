@@ -6,7 +6,6 @@ lazy val root = (project in file("."))
   .settings(
     name := "untitled"
   )
-// Add dependency on ScalaFX library
 libraryDependencies += "org.scalafx" %% "scalafx" % "18.0.1-R28"
 lazy val osName = System.getProperty("os.name") match {
   case n if n.startsWith("Linux")   => "linux"
@@ -16,6 +15,6 @@ lazy val osName = System.getProperty("os.name") match {
 }
 lazy val javaFXModules = Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
 libraryDependencies ++= javaFXModules.map( m =>
-  "org.openjfx" % s"javafx-$m" % "14.0.1" classifier osName
+  "org.openjfx" % s"javafx-$m" % "20.0.1" classifier osName
 )
 libraryDependencies += "org.scalafx" %% "scalafx-extras" % "0.7.0"
